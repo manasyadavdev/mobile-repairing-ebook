@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Mobile Repairing E-book | Learningwave</title>
+  <meta
+    name="description"
+    content="Mobile Repairing E-book — a practical digital learning guide for beginners, technicians and mobile shop owners."
+  />
+
+  <style>
+    :root {
+      --bg: #f6f8fc;
+      --surface: #ffffff;
+      --text: #111827;
+      --muted: #667085;
+      --primary: #635bff;
+      --primary-dark: #5048dc;
+      --accent: #eef0ff;
+      --border: #e7eaf0;
+      --dark: #111827;
+      --radius: 22px;
+      --shadow: 0 20px 60px rgba(17, 24, 39, 0.10);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family:
+        Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+      position: relative;
+      min-height: 720px;
+      display: flex;
+      align-items: center;
+      padding: 80px 0;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 10% 20%, rgba(99, 91, 255, 0.13), transparent 30%),
+        radial-gradient(circle at 90% 80%, rgba(56, 189, 248, 0.12), transparent 28%),
+        #f8f9fd;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      border: 1px solid rgba(99, 91, 255, 0.10);
+      border-radius: 50%;
+      right: -180px;
+      top: -180px;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      border: 1px solid rgba(99, 91, 255, 0.08);
+      border-radius: 50%;
+      left: -130px;
+      bottom: -150px;
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 13px;
+      margin-bottom: 22px;
+      border: 1px solid #dfe2ff;
+      border-radius: 100px;
+      background: rgba(255, 255, 255, 0.75);
+      color: var(--primary);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .eyebrow-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--primary);
+    }
+
+    h1 {
+      max-width: 700px;
+      font-size: clamp(44px, 6vw, 72px);
+      line-height: 1.02;
+      letter-spacing: -0.055em;
+      font-weight: 800;
+      margin-bottom: 24px;
+    }
+
+    h1 span {
+      color: var(--primary);
+    }
+
+    .hero-copy {
+      max-width: 590px;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.75;
+      margin-bottom: 32px;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 54px;
+      padding: 0 28px;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: 0.01em;
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+    }
+
+    .btn-primary {
+      color: white;
+      background: var(--primary);
+      box-shadow: 0 12px 25px rgba(99, 91, 255, 0.24);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      background: var(--primary-dark);
+      box-shadow: 0 16px 32px rgba(99, 91, 255, 0.30);
+    }
+
+    .audience {
+      margin-top: 22px;
+      color: #7b8494;
+      font-size: 13px;
+    }
+
+    /* =========================
+       BOOK VISUAL
+    ========================= */
+
+    .visual-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .book-scene {
+      position: relative;
+      width: 360px;
+      height: 450px;
+    }
+
+    .glow {
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      left: 30px;
+      top: 55px;
+      border-radius: 50%;
+      background: rgba(99, 91, 255, 0.14);
+      filter: blur(45px);
+    }
+
+    .book {
+      position: absolute;
+      left: 35px;
+      top: 30px;
+      width: 280px;
+      height: 390px;
+      padding: 30px;
+      border-radius: 10px 20px 20px 10px;
+      color: white;
+      overflow: hidden;
+      transform: rotate(-5deg);
+      background:
+        linear-gradient(145deg, #191d35, #292458 55%, #635bff);
+      box-shadow:
+        22px 30px 45px rgba(17, 24, 39, 0.22),
+        inset 2px 0 0 rgba(255, 255, 255, 0.10);
+    }
+
+    .book::before {
+      content: "";
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      right: -60px;
+      bottom: -50px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 50%;
+    }
+
+    .book::after {
+      content: "";
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      right: 30px;
+      top: 80px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 50%;
+    }
+
+    .book-label {
+      position: relative;
+      z-index: 1;
+      display: inline-block;
+      padding: 6px 10px;
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 7px;
+      background: rgba(255,255,255,0.10);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .book h2 {
+      position: relative;
+      z-index: 1;
+      margin-top: 65px;
+      font-size: 35px;
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+    }
+
+    .book p {
+      position: relative;
+      z-index: 1;
+      margin-top: 18px;
+      color: rgba(255,255,255,0.78);
+      font-size: 13px;
+    }
+
+    .phone-icon {
+      position: absolute;
+      right: 28px;
+      bottom: 28px;
+      width: 65px;
+      height: 110px;
+      border: 3px solid rgba(255,255,255,0.75);
+      border-radius: 12px;
+    }
+
+    .phone-icon::before {
+      content: "";
+      position: absolute;
+      width: 25px;
+      height: 4px;
+      left: 17px;
+      top: 7px;
+      border-radius: 5px;
+      background: rgba(255,255,255,0.65);
+    }
+
+    .phone-icon::after {
+      content: "";
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      left: 26px;
+      bottom: 8px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.65);
+    }
+
+    .float-card {
+      position: absolute;
+      right: -5px;
+      bottom: 38px;
+      z-index: 2;
+      padding: 14px 17px;
+      border: 1px solid rgba(255,255,255,0.7);
+      border-radius: 14px;
+      background: rgba(255,255,255,0.90);
+      box-shadow: 0 15px 35px rgba(17,24,39,0.12);
+      backdrop-filter: blur(12px);
+    }
+
+    .float-card small {
+      display: block;
+      color: #8a93a3;
+      font-size: 10px;
+      margin-bottom: 2px;
+    }
+
+    .float-card strong {
+      font-size: 16px;
+    }
+
+    /* =========================
+       BENEFITS
+    ========================= */
+
+    .benefits {
+      padding: 110px 0;
+      background: var(--surface);
+    }
+
+    .section-heading {
+      max-width: 650px;
+      margin: 0 auto 55px;
+      text-align: center;
+    }
+
+    .section-kicker {
+      color: var(--primary);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(32px, 4vw, 48px);
+      line-height: 1.1;
+      letter-spacing: -0.04em;
+      margin-bottom: 15px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .benefit-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .benefit-card {
+      padding: 32px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: #fff;
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+    }
+
+    .benefit-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow);
+    }
+
+    .benefit-number {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 45px;
+      height: 45px;
+      margin-bottom: 24px;
+      border-radius: 12px;
+      color: var(--primary);
+      background: var(--accent);
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .benefit-card h3 {
+      margin-bottom: 11px;
+      font-size: 20px;
+      letter-spacing: -0.02em;
+    }
+
+    .benefit-card p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    /* =========================
+       OFFER
+    ========================= */
+
+    .offer {
+      padding: 100px 0;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(99, 91, 255, 0.22), transparent 35%),
+        #111827;
+      color: white;
+    }
+
+    .offer-box {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 60px;
+    }
+
+    .offer .section-kicker {
+      color: #a7a1ff;
+    }
+
+    .offer h2 {
+      max-width: 700px;
+      margin-bottom: 15px;
+      font-size: clamp(34px, 5vw, 55px);
+      line-height: 1.05;
+      letter-spacing: -0.045em;
+    }
+
+    .offer-description {
+      max-width: 600px;
+      color: #aab2c1;
+      font-size: 16px;
+    }
+
+    .offer-details {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+
+    .price {
+      font-size: 48px;
+      line-height: 1;
+      font-weight: 800;
+      letter-spacing: -0.05em;
+    }
+
+    .format {
+      padding-left: 25px;
+      border-left: 1px solid rgba(255,255,255,0.15);
+    }
+
+    .format strong {
+      display: block;
+      font-size: 15px;
+    }
+
+    .format span {
+      color: #98a2b3;
+      font-size: 12px;
+    }
+
+    .offer-action {
+      min-width: 205px;
+    }
+
+    .offer .btn {
+      width: 100%;
+      background: white;
+      color: var(--dark);
+      box-shadow: none;
+    }
+
+    .offer .btn:hover {
+      background: #f1f2f5;
+      transform: translateY(-2px);
+    }
+
+    .secure-note {
+      margin-top: 13px;
+      text-align: center;
+      color: #7f8a9c;
+      font-size: 11px;
+    }
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 850px) {
+      .hero {
+        min-height: auto;
+        padding: 65px 0 80px;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 55px;
+      }
+
+      .hero-content {
+        text-align: center;
+      }
+
+      .eyebrow {
+        margin-bottom: 18px;
+      }
+
+      h1 {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-copy {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-actions {
+        justify-content: center;
+      }
+
+      .audience {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .book-scene {
+        transform: scale(0.88);
+        margin: -25px auto;
+      }
+
+      .benefit-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .benefit-card {
+        padding: 27px;
+      }
+
+      .offer-box {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        text-align: center;
+      }
+
+      .offer-description {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .offer-details {
+        justify-content: center;
+      }
+
+      .offer-action {
+        width: min(100%, 330px);
+        margin: 0 auto;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .container {
+        width: min(100% - 28px, 1120px);
+      }
+
+      .hero {
+        padding-top: 48px;
+      }
+
+      h1 {
+        font-size: 43px;
+      }
+
+      .hero-copy {
+        font-size: 16px;
+        line-height: 1.65;
+      }
+
+      .hero-actions,
+      .hero-actions .btn {
+        width: 100%;
+      }
+
+      .book-scene {
+        width: 310px;
+        height: 390px;
+        transform: scale(0.82);
+        transform-origin: center;
+        margin: -40px auto;
+      }
+
+      .benefits {
+        padding: 75px 0;
+      }
+
+      .section-heading {
+        margin-bottom: 35px;
+      }
+
+      .section-heading h2 {
+        font-size: 34px;
+      }
+
+      .offer {
+        padding: 75px 0;
+      }
+
+      .offer h2 {
+        font-size: 37px;
+      }
+
+      .price {
+        font-size: 43px;
+      }
+
+      .format {
+        padding-left: 18px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =========================
+       SECTION 1 — HERO
+  ========================== -->
+
+  <section class="hero" id="top">
+    <div class="container hero-grid">
+
+      <div class="hero-content">
+
+        <div class="eyebrow">
+          <span class="eyebrow-dot"></span>
+          DIGITAL LEARNING GUIDE
+        </div>
+
+        <h1>
+          Learn the basics of
+          <span>Mobile Repairing.</span>
+        </h1>
+
+        <p class="hero-copy">
+          A beginner-friendly digital guide designed for people who want
+          to understand mobile repairing concepts and build a stronger
+          foundation for hands-on learning.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#offer">
+            DOWNLOAD NOW
+          </a>
+        </div>
+
+        <p class="audience">
+          For beginners • technicians • mobile shop owners
+        </p>
+
+      </div>
+
+      <div class="visual-wrap">
+
+        <div class="book-scene">
+
+          <div class="glow"></div>
+
+          <div class="book">
+
+            <span class="book-label">
+              Learningwave
+            </span>
+
+            <h2>
+              MOBILE<br />
+              REPAIRING
+            </h2>
+
+            <p>
+              Digital learning guide
+              for mobile repair basics.
+            </p>
+
+            <div class="phone-icon"></div>
+
+          </div>
+
+          <div class="float-card">
+            <small>FORMAT</small>
+            <strong>Digital E-book</strong>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- =========================
+       SECTION 2 — BENEFITS
+  ========================== -->
+
+  <section class="benefits" id="benefits">
+
+    <div class="container">
+
+      <div class="section-heading">
+
+        <div class="section-kicker">
+          Why this guide
+        </div>
+
+        <h2>
+          A simple starting point for mobile repairing.
+        </h2>
+
+        <p>
+          Built around clear learning and practical reference for people
+          interested in mobile repair.
+        </p>
+
+      </div>
+
+
+      <div class="benefit-grid">
+
+        <article class="benefit-card">
+
+          <div class="benefit-number">
+            01
+          </div>
+
+          <h3>
+            Build a foundation
+          </h3>
+
+          <p>
+            Get a structured introduction to mobile repairing concepts
+            in an easy-to-follow digital format.
+          </p>
+
+        </article>
+
+
+        <article class="benefit-card">
+
+          <div class="benefit-number">
+            02
+          </div>
+
+          <h3>
+            Learn at your pace
+          </h3>
+
+          <p>
+            Keep the guide available digitally so you can study and
+            revisit the material whenever it is useful.
+          </p>
+
+        </article>
+
+
+        <article class="benefit-card">
+
+          <div class="benefit-number">
+            03
+          </div>
+
+          <h3>
+            Useful for your work
+          </h3>
+
+          <p>
+            A learning resource for beginners, technicians and mobile
+            shop owners looking to strengthen their knowledge.
+          </p>
+
+        </article>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       SECTION 3 — OFFER + CTA
+  ========================== -->
+
+  <section class="offer" id="offer">
+
+    <div class="container offer-box">
+
+      <div>
+
+        <div class="section-kicker">
+          Get the guide
+        </div>
+
+        <h2>
+          Start learning mobile repairing today.
+        </h2>
+
+        <p class="offer-description">
+          Get the Mobile Repairing E-book in digital format and use it
+          as a convenient learning reference.
+        </p>
+
+        <div class="offer-details">
+
+          <div class="price">
+            ₹249
+          </div>
+
+          <div class="format">
+            <strong>Digital E-book</strong>
+            <span>Instant digital learning format</span>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="offer-action">
+
+        <a class="btn" href="#top">
+          DOWNLOAD NOW
+        </a>
+
+        <div class="secure-note">
+          Digital product • ₹249
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</body>
+</html>
